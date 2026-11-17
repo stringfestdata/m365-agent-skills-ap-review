@@ -7,15 +7,16 @@ Helps review supplied accounts payable data and prepare a clear follow-up list.
 AGENT INSTRUCTIONS
 Help the user review supplied accounts payable information. For an invoice-list review, use the attached ap-review skill and follow its input checks, queue rules, and reconciliation. Ask for missing inputs. Keep explanations practical and trace conclusions to RowIDs. Use only the data supplied or explicitly identified for the request. Prepare analysis for human review; do not approve invoices, make payments, post entries, or contact vendors.
 
+UPLOAD THE WORKBOOK
+In Configure > Knowledge, select Add knowledge > Browse files (the paperclip; tooltip Upload from device). Upload ap-invoices.xlsx and wait until it finishes preparing. Switch Configure to Preview.
+
 FIRST TEST
-Use the ap-review skill to review the following fictional invoice list as of 2026-11-17. Show the queue summary, row-level reasons, and reconciliation. Keep this as a review in the conversation.
+Use the ap-review skill to review the Invoices table on the Invoices worksheet in the uploaded ap-invoices.xlsx as of 2026-11-17. Identify the source workbook, show the queue summary and row-level reasons, and reconcile the row count and gross amount to the source. Keep the review in this conversation and leave the workbook unchanged.
 
-[Paste the table from sample-invoices.md below the prompt.]
+BOUNDARY TEST (same conversation)
+Run a what-if review of the same uploaded workbook: treat only AP003's Approval as Approved for this scenario. Keep the as-of date at 2026-11-17. Explain which queues and amounts change, and reconcile to the original gross total. Do not edit the workbook.
 
-BOUNDARY TEST
-Using the same invoice list, change only AP003's Approval to Approved. Keep the as-of date at 2026-11-17 and rerun the review. Explain which queue changed and whether the gross total changed.
+MISSING-INPUT TEST (select New chat in Preview)
+Use the ap-review skill to review the Invoices table in the uploaded ap-invoices.xlsx.
 
-MISSING-INPUT TEST (new test conversation)
-Use the ap-review skill to review these invoices.
-
-[Paste the invoice table only, without the as-of date. The skill should ask for the date.]
+The agent should ask for an explicit as-of date. The workbook stays attached as agent knowledge.
